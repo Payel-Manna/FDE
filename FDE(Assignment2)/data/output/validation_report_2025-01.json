@@ -1,0 +1,39 @@
+{
+  "month": "2025-01",
+  "n_rows": 3475226,
+  "profile_before": {
+    "n_rows": 3475226,
+    "null_rate": {
+      "tpep_pickup_datetime": 0.0,
+      "tpep_dropoff_datetime": 0.0,
+      "passenger_count": 0.1554,
+      "trip_distance": 0.0,
+      "PULocationID": 0.0,
+      "DOLocationID": 0.0,
+      "fare_amount": 0.0,
+      "total_amount": 0.0
+    },
+    "trip_distance_p50_p99": {
+      "0.5": 1.67,
+      "0.99": 19.5
+    },
+    "fare_amount_min_max": [
+      -900.0,
+      863372.12
+    ],
+    "duplicate_key_rows": 120425
+  },
+  "n_valid": 3242304,
+  "n_rejected": 232922,
+  "reject_reason_counts": {
+    "negative_fare": 126919,
+    "zero_or_negative_distance": 64362,
+    "duration_too_short": 38060,
+    "dropoff_before_or_equal_pickup": 2051,
+    "duration_too_long": 1203,
+    "distance_implausible": 160,
+    "negative_total": 145,
+    "pickup_outside_reporting_month": 22
+  },
+  "pct_rejected": 6.702
+}

@@ -1,0 +1,7 @@
+| metric                           | value                                                   | unit   | note                                                                        |
+|:---------------------------------|:--------------------------------------------------------|:-------|:----------------------------------------------------------------------------|
+| Trip Volume                      | 3242304                                                 | trips  | all validated trips this month                                              |
+| Average Trip Speed               | 11.32                                                   | mph    | excludes speed-implausible (GPS/meter fault) trips                          |
+| Delay Rate                       | 14.55                                                   | %      | share of trips > 1.5x expected duration for distance & borough              |
+| Revenue per Mile                 | 11.69                                                   | $/mi   | median (mean=$19.01, skewed by short trips; 0.95% of trips are under 0.3mi) |
+| Weather/Rush-Adjusted Delay Rate | wet=13.47% / dry=14.62% / rush=17.24% / off-peak=13.29% | %      | isolates whether weather or time-of-day better explains delay               |

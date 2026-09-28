@@ -1,0 +1,79 @@
+2026-09-25 09:45:40,438 [INFO] [pipeline] === PIPELINE START: month=2025-01 force=False ===
+2026-09-25 09:45:40,439 [INFO] [pipeline] --- stage: ingest ---
+2026-09-25 09:45:40,439 [INFO] [ingest] downloading https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2025-01.parquet
+2026-09-25 09:45:41,857 [INFO] [ingest] [ok] saved yellow_tripdata_2025-01.parquet (59,158,238 bytes)
+2026-09-25 09:45:45,209 [INFO] [ingest] [verified] yellow_tripdata_2025-01.parquet: 3,475,226 rows retrieved
+2026-09-25 09:45:45,209 [INFO] [ingest] downloading https://d37ci6vzurychx.cloudfront.net/misc/taxi_zone_lookup.csv
+2026-09-25 09:45:45,268 [INFO] [ingest] [ok] saved taxi_zone_lookup.csv (12,331 bytes)
+2026-09-25 09:45:45,273 [INFO] [ingest] [verified] zone lookup: 265 zones
+2026-09-25 09:45:45,274 [INFO] [ingest] calling Open-Meteo API for 2025-01-01..2025-01-31
+2026-09-25 09:45:45,913 [INFO] [ingest] [verified] weather: 744 hourly records saved to weather_2025-01.json
+2026-09-25 09:45:45,914 [INFO] [pipeline] --- stage: validate ---
+2026-09-25 09:46:12,471 [ERROR] [pipeline] STAGE FAILED: validate — 'n_rows'
+2026-09-25 09:46:12,473 [ERROR] [pipeline] === PIPELINE HALTED at 'validate'. Fix the issue above and re-run; earlier stages' outputs are preserved and will be skipped unless --force. ===
+2026-09-25 09:50:28,224 [INFO] [pipeline] === PIPELINE START: month=2025-01 force=True ===
+2026-09-25 09:50:28,224 [INFO] [pipeline] --- stage: ingest ---
+2026-09-25 09:50:28,224 [INFO] [ingest] downloading https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2025-01.parquet
+2026-09-25 09:50:29,581 [INFO] [ingest] [ok] saved yellow_tripdata_2025-01.parquet (59,158,238 bytes)
+2026-09-25 09:50:29,731 [INFO] [ingest] [verified] yellow_tripdata_2025-01.parquet: 3,475,226 rows retrieved
+2026-09-25 09:50:29,731 [INFO] [ingest] downloading https://d37ci6vzurychx.cloudfront.net/misc/taxi_zone_lookup.csv
+2026-09-25 09:50:29,774 [INFO] [ingest] [ok] saved taxi_zone_lookup.csv (12,331 bytes)
+2026-09-25 09:50:29,779 [INFO] [ingest] [verified] zone lookup: 265 zones
+2026-09-25 09:50:29,780 [INFO] [ingest] calling Open-Meteo API for 2025-01-01..2025-01-31
+2026-09-25 09:50:30,380 [INFO] [ingest] [verified] weather: 744 hourly records saved to weather_2025-01.json
+2026-09-25 09:50:30,381 [INFO] [pipeline] --- stage: validate ---
+2026-09-25 09:50:55,186 [INFO] [validate] validated 3,475,226 rows -> 3,242,304 valid, 232,922 rejected (6.702%) — see validation_report_2025-01.json
+2026-09-25 09:50:56,946 [INFO] [pipeline] --- stage: transform ---
+2026-09-25 09:50:57,493 [WARNING] [transform] 387 trips have a PULocationID not in the zone lookup (Unknown/N/A zones) — kept, tagged 'Unknown'
+2026-09-25 09:51:01,958 [INFO] [transform] modeled 3,242,304 trips -> modeled_trips_2025-01.parquet
+2026-09-25 09:51:01,987 [INFO] [pipeline] --- stage: metrics ---
+2026-09-25 09:51:03,644 [ERROR] [pipeline] STAGE FAILED: metrics — `Import tabulate` failed.  Use pip or conda to install the tabulate package.
+2026-09-25 09:51:03,661 [ERROR] [pipeline] === PIPELINE HALTED at 'metrics'. Fix the issue above and re-run; earlier stages' outputs are preserved and will be skipped unless --force. ===
+2026-09-25 09:52:54,626 [INFO] [pipeline] === PIPELINE START: month=2025-01 force=False ===
+2026-09-25 09:52:54,626 [INFO] [pipeline] --- stage: ingest ---
+2026-09-25 09:52:54,626 [INFO] [ingest] [skip] yellow_tripdata_2025-01.parquet already present (59,158,238 bytes)
+2026-09-25 09:52:54,766 [INFO] [ingest] [verified] yellow_tripdata_2025-01.parquet: 3,475,226 rows retrieved
+2026-09-25 09:52:54,766 [INFO] [ingest] [skip] taxi_zone_lookup.csv already present (12,331 bytes)
+2026-09-25 09:52:54,768 [INFO] [ingest] [verified] zone lookup: 265 zones
+2026-09-25 09:52:54,768 [INFO] [ingest] [skip] weather_2025-01.json already present
+2026-09-25 09:52:54,768 [INFO] [pipeline] --- stage: validate ---
+2026-09-25 09:53:20,106 [INFO] [validate] validated 3,475,226 rows -> 3,242,304 valid, 232,922 rejected (6.702%) — see validation_report_2025-01.json
+2026-09-25 09:53:21,824 [INFO] [pipeline] --- stage: transform ---
+2026-09-25 09:53:22,405 [WARNING] [transform] 387 trips have a PULocationID not in the zone lookup (Unknown/N/A zones) — kept, tagged 'Unknown'
+2026-09-25 09:53:26,782 [INFO] [transform] modeled 3,242,304 trips -> modeled_trips_2025-01.parquet
+2026-09-25 09:53:26,816 [INFO] [pipeline] --- stage: metrics ---
+2026-09-25 09:53:28,563 [INFO] [metrics] metrics written -> metrics_2025-01.csv, metrics_2025-01.md
+2026-09-25 09:53:28,594 [INFO] [pipeline] === PIPELINE COMPLETE: see data/output/metrics_2025-01.md ===
+2026-09-25 09:57:13,440 [INFO] [pipeline] === PIPELINE START: month=2025-01 force=True ===
+2026-09-25 09:57:13,440 [INFO] [pipeline] --- stage: ingest ---
+2026-09-25 09:57:13,440 [INFO] [ingest] downloading https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2025-01.parquet
+2026-09-25 09:57:14,814 [INFO] [ingest] [ok] saved yellow_tripdata_2025-01.parquet (59,158,238 bytes)
+2026-09-25 09:57:14,956 [INFO] [ingest] [verified] yellow_tripdata_2025-01.parquet: 3,475,226 rows retrieved
+2026-09-25 09:57:14,957 [INFO] [ingest] downloading https://d37ci6vzurychx.cloudfront.net/misc/taxi_zone_lookup.csv
+2026-09-25 09:57:14,997 [INFO] [ingest] [ok] saved taxi_zone_lookup.csv (12,331 bytes)
+2026-09-25 09:57:15,002 [INFO] [ingest] [verified] zone lookup: 265 zones
+2026-09-25 09:57:15,002 [INFO] [ingest] calling Open-Meteo API for 2025-01-01..2025-01-31
+2026-09-25 09:57:15,676 [INFO] [ingest] [verified] weather: 744 hourly records saved to weather_2025-01.json
+2026-09-25 09:57:15,677 [INFO] [pipeline] --- stage: validate ---
+2026-09-25 09:57:40,053 [INFO] [validate] validated 3,475,226 rows -> 3,242,304 valid, 232,922 rejected (6.702%) — see validation_report_2025-01.json
+2026-09-25 09:57:41,708 [INFO] [pipeline] --- stage: transform ---
+2026-09-25 09:57:42,245 [WARNING] [transform] 387 trips have a PULocationID not in the zone lookup (Unknown/N/A zones) — kept, tagged 'Unknown'
+2026-09-25 09:57:46,549 [INFO] [transform] modeled 3,242,304 trips -> modeled_trips_2025-01.parquet
+2026-09-25 09:57:46,575 [INFO] [pipeline] --- stage: metrics ---
+2026-09-25 09:57:48,133 [INFO] [metrics] metrics written -> metrics_2025-01.csv, metrics_2025-01.md
+2026-09-25 09:57:48,158 [INFO] [pipeline] === PIPELINE COMPLETE: see data/output/metrics_2025-01.md ===
+2026-09-27 19:39:57,945 [INFO] [pipeline] === PIPELINE START: month=2025-01 force=False ===
+2026-09-27 19:39:57,946 [INFO] [pipeline] --- stage: ingest ---
+2026-09-27 19:39:57,946 [INFO] [ingest] [skip] yellow_tripdata_2025-01.parquet already present (59,158,238 bytes)
+2026-09-27 19:39:58,286 [INFO] [ingest] [verified] yellow_tripdata_2025-01.parquet: 3,475,226 rows retrieved
+2026-09-27 19:39:58,286 [INFO] [ingest] [skip] taxi_zone_lookup.csv already present (12,331 bytes)
+2026-09-27 19:39:58,291 [INFO] [ingest] [verified] zone lookup: 265 zones
+2026-09-27 19:39:58,292 [INFO] [ingest] [skip] weather_2025-01.json already present
+2026-09-27 19:39:58,292 [INFO] [pipeline] --- stage: validate ---
+2026-09-27 19:40:45,191 [INFO] [validate] validated 3,475,226 rows -> 3,242,304 valid, 232,922 rejected (6.702%) — see validation_report_2025-01.json
+2026-09-27 19:40:48,344 [INFO] [pipeline] --- stage: transform ---
+2026-09-27 19:40:49,690 [WARNING] [transform] 387 trips have a PULocationID not in the zone lookup (Unknown/N/A zones) — kept, tagged 'Unknown'
+2026-09-27 19:40:57,799 [INFO] [transform] modeled 3,242,304 trips -> modeled_trips_2025-01.parquet
+2026-09-27 19:40:57,869 [INFO] [pipeline] --- stage: metrics ---
+2026-09-27 19:41:01,135 [INFO] [metrics] metrics written -> metrics_2025-01.csv, metrics_2025-01.md
+2026-09-27 19:41:01,233 [INFO] [pipeline] === PIPELINE COMPLETE: see data/output/metrics_2025-01.md ===
